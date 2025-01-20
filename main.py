@@ -19,7 +19,7 @@ class Automatizacion:
         
         self.editarexcel = editarexcel(rutalocalexcel)
         self.drive = conexiondrive('1wcsIICT1KjWlhKQnSNJZn09AqCrtiT6g', 'tasas-transfi.xlsx', rutalocalexcel)
-        self.hoja = 'Hoja1'
+        self.hoja = 'tasas'
         
     def cop_usdt(self):
         precio = self.calculotasa('COP', 'BUY', 1, 10, 65000, [], 10000)
@@ -65,4 +65,5 @@ if __name__ == "__main__":
     automatizacion.usdt_cop()
     automatizacion.bs_usdt()
     automatizacion.usdt_bs()
+    automatizacion.editarexcel.calcular_mensaje()
     automatizacion.drive.sincronizararchivo()
