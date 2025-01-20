@@ -24,6 +24,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Verificar permisos de archivos
+        run: |
+          ls -l
+          ls -l ./tasas-transfi.xlsx
+
       - name: Configurar variables de entorno
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
