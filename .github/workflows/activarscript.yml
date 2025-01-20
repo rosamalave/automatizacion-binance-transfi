@@ -2,10 +2,8 @@ name: Automatización Binance Transfi
 
 on:
   schedule:
-    # La hora de Venezuela es UTC-4:00, así que convertimos los horarios a UTC
-    - cron: '15 12 * * *' # 8:15 AM hora de Venezuela -> 12:15 PM UTC
-    - cron: '30 17 * * *' # 1:30 PM hora de Venezuela -> 5:30 PM UTC
-
+    - cron: '15 12 * * *' # 8:15 AM hora de Venezuela (12:15 PM UTC)
+    - cron: '30 17 * * *' # 1:30 PM hora de Venezuela (5:30 PM UTC)
   workflow_dispatch: # Permite ejecutar manualmente el workflow desde la pestaña Actions
 
 jobs:
@@ -27,14 +25,12 @@ jobs:
           pip install -r requirements.txt
 
       - name: Configurar variables de entorno
-        env:
-          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-        run: echo "Variables de entorno configuradas"
+        run: echo "GOOGLE_CREDENTIALS=${{ secrets.GOOGLE_CREDENTIALS }}" >> $GITHUB_ENV
 
       - name: Ejecutar el script de automatización
         run: python main.py  # Cambia 'main.py' por el nombre de tu script principal
         env:
-          GITHUB_ACTIONS: true # Asegurarse de que esta variable esté disponible en el entorno
+          GITHUB_ACTIONS: true
 
       - name: Notificar éxito
         if: success()
