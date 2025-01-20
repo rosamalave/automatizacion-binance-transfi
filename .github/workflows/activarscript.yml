@@ -25,12 +25,15 @@ jobs:
           pip install -r requirements.txt
 
       - name: Configurar variables de entorno
-        run: echo "GOOGLE_CREDENTIALS=${{ secrets.GOOGLE_CREDENTIALS }}" >> $GITHUB_ENV
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+        run: echo "Variables de entorno configuradas"
 
       - name: Ejecutar el script de automatización
         run: python main.py  # Cambia 'main.py' por el nombre de tu script principal
         env:
           GITHUB_ACTIONS: true
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
 
       - name: Notificar éxito
         if: success()
