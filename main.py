@@ -10,7 +10,7 @@ class Automatizacion:
         self.tasasbinance = tasasbinance()
         if os.getenv("GITHUB_ACTIONS") == "true":
             # Ruta para GitHub Actions
-            rutalocalexcel = 'tasas-transfi.xlsx'
+            rutalocalexcel = './tasas-transfi.xlsx'
         else:
             # Ruta local en tu máquina
             rutalocalexcel = 'R:/Respaldo/Rosa/TRABAJO/transfihermanos/automatizacion/automatizacion-binance-transfi/tasas-transfi.xlsx'
