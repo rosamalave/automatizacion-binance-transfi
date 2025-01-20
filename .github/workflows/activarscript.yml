@@ -1,0 +1,29 @@
+name: Automatización Binance Transfi
+
+on:
+  schedule:
+    - cron: '15 12 * * *' # A las 8:15 AM hora de Venezuela
+    - cron: '30 17 * * *' # A la 1:30 PM hora de Venezuela
+
+  workflow_dispatch: # Permite ejecutar manualmente el workflow desde la pestaña Actions
+
+jobs:
+  ejecutar-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v3
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.13.1'
+
+      - name: Instalar dependencias
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Ejecutar el script de automatización
+        run: python main.py  # Cambia 'main.py' por el nombre de tu script principal

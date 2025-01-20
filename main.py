@@ -1,3 +1,5 @@
+#.venv\Scripts\activate
+import os
 from tasasbinance import tasasbinance
 from actualizarexcel import editarexcel
 from actualizardrive import conexiondrive
@@ -6,6 +8,13 @@ class Automatizacion:
 
     def __init__(self):
         self.tasasbinance = tasasbinance()
+        if os.getenv("GITHUB_ACTIONS") == "true":
+            # Ruta para GitHub Actions
+            rutalocalexcel = 'tasas-transfi.xlsx'
+        else:
+            # Ruta local en tu máquina
+            rutalocalexcel = 'R:/Respaldo/Rosa/TRABAJO/transfihermanos/automatizacion/automatizacion-binance-transfi/tasas-transfi.xlsx'
+        
         rutalocalexcel='R:/Respaldo/Rosa/TRABAJO/transfihermanos/automatizacion/automatizacion-binance-transfi/tasas-transfi.xlsx'
         self.editarexcel = editarexcel(rutalocalexcel)
         self.drive=conexiondrive('1wcsIICT1KjWlhKQnSNJZn09AqCrtiT6g','tasas-transfi.xlsx', rutalocalexcel)
