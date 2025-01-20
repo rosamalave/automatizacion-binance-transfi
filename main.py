@@ -8,8 +8,8 @@ class Automatizacion:
 
     def __init__(self):
         self.tasasbinance = tasasbinance()
-        if os.getenv("GITHUB_ACTIONS") == "true":
-            # Ruta para GitHub Actions
+        if os.environ.get("GITHUB_ACTIONS") == "true":
+            # Ruta relativa dentro del repositorio en GitHub
             rutalocalexcel = './tasas-transfi.xlsx'
         else:
             # Ruta local en tu máquina
