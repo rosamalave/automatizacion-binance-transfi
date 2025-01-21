@@ -29,16 +29,20 @@ jobs:
           ls -l
           ls -l ./tasas-transfi.xlsx
 
-      - name: Configurar variables de entorno
+      - name: Configurar variables de entorno para Google y Telegram
+        run: echo "Variables de entorno configuradas"
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-        run: echo "Variables de entorno configuradas"
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
 
       - name: Ejecutar el script de automatización
         run: python main.py  # Cambia 'main.py' por el nombre de tu script principal
         env:
           GITHUB_ACTIONS: true
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
 
       - name: Hacer commit de los cambios
         run: |

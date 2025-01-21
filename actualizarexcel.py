@@ -55,9 +55,9 @@ class editarexcel():
             f"✅ 1000 Bs = {round(valor_bsausdt, 2)} = {round(valor_usdtacop, 2)} pesos\n"
             f"✅ {round(valor_usdtacop, 2)} pesos = {round(valor_copausdt, 2)} = {round(valor_usdtabs, 2)} Bs\n\n"
             "Promedio competencia\n"
-            f"✅ Tasa pesos: {round(promediotasa, 2)}\n"
-            f"✅ Tasa Bs: {round(valor_usdtacop, 2)}\n"
-            f"✅ % Ganancia: {round(valor_usdtabs * 100, 2)}%"
+            f"✅ Tasa pesos: {round(20, 2)}\n"
+            f"✅ Tasa Bs: {round(20, 2)}\n"
+            f"✅ % Ganancia: {round(20, 2)}%"
         )
 
         # Mostrar el mensaje en la celda A1 de otra hoja, por ejemplo, 'Mensaje'
@@ -66,6 +66,7 @@ class editarexcel():
 
         # Guardar los cambios en el archivo
         self.excel.save(self.rutaarchivo)
+        return mensaje
 
 if __name__ == "__main__":
     # Inicializar la clase para ejecutar el script

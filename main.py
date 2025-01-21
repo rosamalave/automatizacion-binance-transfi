@@ -3,12 +3,13 @@ import os
 from tasasbinance import tasasbinance
 from actualizarexcel import editarexcel
 from actualizardrive import conexiondrive
+from mensajetelegram import bottelegram
+import asyncio
 
 class Automatizacion:
 
     def __init__(self):
         self.tasasbinance = tasasbinance()
-        
         # Verificar si el script se está ejecutando en un GitHub Action
         if os.environ.get("GITHUB_ACTIONS") == "true":
             # Ruta relativa dentro del repositorio en GitHub
@@ -61,9 +62,11 @@ class Automatizacion:
 if __name__ == "__main__":
     # Inicializar la clase para ejecutar el script
     automatizacion = Automatizacion()
+    bot=bottelegram('R:/Respaldo/Rosa/TRABAJO/transfihermanos/automatizacion/tokenbot.xlsx')
     automatizacion.cop_usdt()
     automatizacion.usdt_cop()
     automatizacion.bs_usdt()
     automatizacion.usdt_bs()
-    automatizacion.editarexcel.calcular_mensaje()
+    mensaje=automatizacion.editarexcel.calcular_mensaje()
+    asyncio.run(bot.enviar_mensaje_automatico(mensaje, None))
     automatizacion.drive.sincronizararchivo()
