@@ -33,7 +33,7 @@ class bottelegram():
         return mensaje
 
     # Función para obtener las credenciales de GitHub Secrets (en caso de estar en GitHub Actions)
-    def leer_credenciales_desde_github():
+    def leer_credenciales_desde_github(self):
         token = os.getenv('TELEGRAM_BOT_TOKEN')  # GitHub Secret
         chat_id = os.getenv('TELEGRAM_CHAT_ID')  # GitHub Secret
         return token, int(chat_id)
